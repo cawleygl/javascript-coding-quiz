@@ -85,9 +85,9 @@ questionPage5.addEventListener("click", function(event) {
         questionPage5.classList.add("hide");
         finalPage.classList.remove("hide");
         clearInterval(interval);
-        scoreEl.textContent = "Your score: " + timeLeft + " seconds";
+        scoreEl.textContent = ("Your score: " + (75 - parseInt(timeLeft)) + " seconds");
         timerEl.textContent = "Time: 0";
-        console.log("Time: " + timeLeft);
+        console.log("timeLeft: " + timeLeft);
     }
 });
 
@@ -96,13 +96,12 @@ submitButton.addEventListener("click", function() {
     console.log("Submit Score")
     finalPage.classList.add("hide");
     highscorePage.classList.remove("hide");
-
+    
     var leaderboardTop = document.createElement("li");
-    var score = localStorage.getItem("score");
+    var score = 75 - parseInt(timeLeft)
     var initials = initialsEl.value
 
-    localStorage.setItem(initials, timeLeft);
-
+    localStorage.setItem(initials, score);
 
     leaderboardTop.textContent = initials + ": " + score;
     leaderboardEl.appendChild(leaderboardTop);
