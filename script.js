@@ -14,6 +14,7 @@ var backButton = document.querySelector("#back");
 var clearButton = document.querySelector("#clear");
 var timerEl = document.querySelector("#timer");
 var scoreEl = document.querySelector("#scoredisplay");
+var leaderboardEl = document.querySelector("#leaderboard");
 
 var timeLeft = 0;
 timerEl.textContent = "Time: " + timeLeft;
@@ -76,15 +77,19 @@ questionPage5.addEventListener("click", function(event) {
         clearInterval(interval);
         scoreEl.textContent = "Your score: " + timeLeft + " seconds";
         timerEl.textContent = "Time: 0";
+        localStorage.setItem("lastscore", timeLeft);
         console.log("Time: " + timeLeft);
     }
 });
-
 
 submitButton.addEventListener("click", function() {
     console.log("Submit Score")
     finalPage.classList.add("hide");
     highscorePage.classList.remove("hide");
+    var leaderboardTop = document.createElement("li");
+    var lastScore = localStorage.getItem("lastscore");
+    leaderboardTop.textContent = lastScore;
+    leaderboardEl.appendChild(leaderboardTop);
 
 });
 
