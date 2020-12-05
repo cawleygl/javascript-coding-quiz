@@ -16,9 +16,16 @@ var clearButton = document.querySelector("#clear");
 
 //Element query selectors
 var timerEl = document.querySelector("#timer");
-var scoreEl = document.querySelector("#scoredisplay");
+var currentScoreEl = document.querySelector("#scoredisplay");
 var leaderboardEl = document.querySelector("#leaderboard");
 var initialsEl = document.querySelector("#initials");
+
+//local storage arrays
+var scoresArr = [];
+var initialsArr = [];
+var storedScores = [];
+var storedInitials = [];
+
 
 //Timer variable reset 
 var timeLeft = 0;
@@ -85,11 +92,14 @@ questionPage5.addEventListener("click", function(event) {
         questionPage5.classList.add("hide");
         finalPage.classList.remove("hide");
         clearInterval(interval);
-        scoreEl.textContent = ("Your score: " + (75 - parseInt(timeLeft)) + " seconds");
+        currentScoreEl.textContent = ("Your Score: " + (75 - parseInt(timeLeft)) + " seconds");
         timerEl.textContent = "Time: 0";
         console.log("timeLeft: " + timeLeft);
+
+
     }
 });
+
 
 //Submit button
 submitButton.addEventListener("click", function() {
@@ -97,14 +107,44 @@ submitButton.addEventListener("click", function() {
     finalPage.classList.add("hide");
     highscorePage.classList.remove("hide");
     
-    var leaderboardTop = document.createElement("li");
-    var score = 75 - parseInt(timeLeft)
-    var initials = initialsEl.value
+    //calclulate current score value, set to variable
+    var currentScore = 75 - parseInt(timeLeft)
+    //take initials from user input, set to variable
+    var currentInitials = initialsEl.value
 
-    localStorage.setItem(initials, score);
+    // Get stored scores from localStorage
 
-    leaderboardTop.textContent = initials + ": " + score;
-    leaderboardEl.appendChild(leaderboardTop);
+    var storedScores = JSON.parse(localStorage.getItem("scores"));
+    var storedInitials = JSON.parse(localStorage.getItem("initials"));
+      
+    // If scores/initials were retrieved from localStorage, update the arrays to it
+    if (storedScores !== null) {
+        scoresArr.concat(storedScores);
+    }
+    if (storedInitials !== null) {
+        initialsArr.concat(storedInitials);
+    }
+
+    //concat current score/initials to arrays containing previous scores/initials
+    scoresArr.push(currentScore);
+    initialsArr.push(currentInitials);
+    
+    //store both score and initials in local storage
+    localStorage.setItem("scores", JSON.stringify(scoresArr));
+    localStorage.setItem("initials", JSON.stringify(initialsArr));
+
+    //Remove all scores from leaderboard html before rendering
+    leaderboardEl.innerHTML = "";
+
+    // Render a new li for each score
+    for (var i = 0; i < scoresArr.length; i++) {
+        var score = scoresArr[i];
+        var initial = initialsArr[i];
+
+        var leaderboardTop = document.createElement("li");
+        leaderboardTop.textContent = initial + ": " + score + " seconds";
+        leaderboardEl.appendChild(leaderboardTop);
+    }
 
 });
 
@@ -119,6 +159,8 @@ backButton.addEventListener("click", function() {
 //Clear button
 clearButton.addEventListener("click", function() {
     console.log("Clear Highscores")
-
+    leaderboardEl.innerHTML = "";
+    localStorage.removeItem("scores");
+    localStorage.removeItem("initials");
 });
 
