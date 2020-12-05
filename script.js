@@ -36,6 +36,7 @@ var storedInitials = [];
 var timeLeft = 0;
 timerEl.textContent = "Time: " + timeLeft;
 
+//Timer function
 function startTimer() {
     timeLeft = 75;
     timerEl.textContent = "Time: " + timeLeft;
@@ -146,51 +147,53 @@ questionPage5.addEventListener("click", function(event) {
 
 });
 
+//Submit your score, saving it to local storage and showing it with other saved scores 
+function submitScore() {
+   //calclulate current score value, set to variable
+   var currentScore = 75 - parseInt(timeLeft)
+   //take initials from user input, set to variable
+   var currentInitials = initialsEl.value
+
+   // Get stored scores from localStorage
+   var storedScores = JSON.parse(localStorage.getItem("scores"));
+   var storedInitials = JSON.parse(localStorage.getItem("initials"));
+     
+   // If scores/initials were retrieved from localStorage, update the arrays to it
+   if (storedScores !== null) {
+       scoresArr = storedScores;
+   }
+   if (storedInitials !== null) {
+       initialsArr = storedInitials;
+   }
+
+   //concat current score/initials to arrays containing previous scores/initials
+   scoresArr.unshift(currentScore);
+   initialsArr.unshift(currentInitials);
+   
+   //store both score and initials in local storage
+   localStorage.setItem("scores", JSON.stringify(scoresArr));
+   localStorage.setItem("initials", JSON.stringify(initialsArr));
+
+   //Remove all scores from leaderboard html before rendering
+   leaderboardEl.innerHTML = "";
+
+   // Render a new li for each score
+   for (var i = 0; i < scoresArr.length; i++) {
+       var score = scoresArr[i];
+       var initial = initialsArr[i];
+
+       var leaderboardTop = document.createElement("li");
+       leaderboardTop.textContent = initial + ": " + score + " seconds";
+       leaderboardEl.appendChild(leaderboardTop);
+   }
+}
 
 //Submit button
 submitButton.addEventListener("click", function() {
     console.log("Submit Score")
     finalPage.classList.add("hide");
     highscorePage.classList.remove("hide");
-    
-    //calclulate current score value, set to variable
-    var currentScore = 75 - parseInt(timeLeft)
-    //take initials from user input, set to variable
-    var currentInitials = initialsEl.value
-
-    // Get stored scores from localStorage
-    var storedScores = JSON.parse(localStorage.getItem("scores"));
-    var storedInitials = JSON.parse(localStorage.getItem("initials"));
-      
-    // If scores/initials were retrieved from localStorage, update the arrays to it
-    if (storedScores !== null) {
-        scoresArr = storedScores;
-    }
-    if (storedInitials !== null) {
-        initialsArr = storedInitials;
-    }
-
-    //concat current score/initials to arrays containing previous scores/initials
-    scoresArr.unshift(currentScore);
-    initialsArr.unshift(currentInitials);
-    
-    //store both score and initials in local storage
-    localStorage.setItem("scores", JSON.stringify(scoresArr));
-    localStorage.setItem("initials", JSON.stringify(initialsArr));
-
-    //Remove all scores from leaderboard html before rendering
-    leaderboardEl.innerHTML = "";
-
-    // Render a new li for each score
-    for (var i = 0; i < scoresArr.length; i++) {
-        var score = scoresArr[i];
-        var initial = initialsArr[i];
-
-        var leaderboardTop = document.createElement("li");
-        leaderboardTop.textContent = initial + ": " + score + " seconds";
-        leaderboardEl.appendChild(leaderboardTop);
-    }
-
+    submitScore()
 });
 
 //Go back button
@@ -205,7 +208,7 @@ backButton.addEventListener("click", function() {
 clearButton.addEventListener("click", function() {
     console.log("Clear Highscores")
     leaderboardEl.innerHTML = "";
-    localStorage.removeItem("scores");
-    localStorage.removeItem("initials");
+    localStorage.clear();
+
 });
 
