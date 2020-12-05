@@ -39,7 +39,6 @@ timerEl.textContent = "Time: " + timeLeft;
 function startTimer() {
     timeLeft = 75;
     timerEl.textContent = "Time: " + timeLeft;
-    console.log("START!");
     timerInt = setInterval(function() {
         timeLeft--;
         timerEl.textContent = "Time: " + timeLeft;
@@ -80,7 +79,6 @@ questionPage1.addEventListener("click", function(event) {
     }
 
     if(event.target.matches("button")) {
-        console.log(event.target.value);
         questionPage1.classList.add("hide");
         questionPage2.classList.remove("hide");
     }
@@ -89,7 +87,7 @@ questionPage1.addEventListener("click", function(event) {
 //Select an answer for question 2
 questionPage2.addEventListener("click", function(event) {
     event.preventDefault();
-    if (event.target.value !== "A") {
+    if (event.target.value !== "D") {
         timeLeft = timeLeft - 10;
         q2feedback.textContent = "Incorrect!";
         q2feedback.classList.add("alert")
@@ -113,7 +111,6 @@ questionPage2.addEventListener("click", function(event) {
     }
 
     if(event.target.matches("button")) {
-        console.log(event.target.value);
         questionPage2.classList.add("hide");
         questionPage3.classList.remove("hide");
     }
@@ -123,7 +120,7 @@ questionPage2.addEventListener("click", function(event) {
 //Select an answer for question 3
 questionPage3.addEventListener("click", function(event) {
     event.preventDefault();
-    if (event.target.value !== "A") {
+    if (event.target.value !== "C") {
         timeLeft = timeLeft - 10;
         q3feedback.textContent = "Incorrect!";
         q3feedback.classList.add("alert")
@@ -147,7 +144,6 @@ questionPage3.addEventListener("click", function(event) {
     }
 
     if(event.target.matches("button")) {
-        console.log(event.target.value);
         questionPage3.classList.add("hide");
         questionPage4.classList.remove("hide");
     }
@@ -181,7 +177,6 @@ questionPage4.addEventListener("click", function(event) {
     }
 
     if(event.target.matches("button")) {
-        console.log(event.target.value);
         questionPage4.classList.add("hide");
         questionPage5.classList.remove("hide");
     }
@@ -191,7 +186,7 @@ questionPage4.addEventListener("click", function(event) {
 //Select an answer for question 5
 questionPage5.addEventListener("click", function(event) {
     event.preventDefault();
-    if (event.target.value !== "A") {
+    if (event.target.value !== "B") {
         timeLeft = timeLeft - 10;
         q5feedback.textContent = "Incorrect!";
         q5feedback.classList.add("alert")
@@ -215,13 +210,11 @@ questionPage5.addEventListener("click", function(event) {
     }
 
     if(event.target.matches("button")) {
-        console.log(event.target.value);
         questionPage5.classList.add("hide");
         finalPage.classList.remove("hide");
         clearInterval(timerInt);
         currentScoreEl.textContent = ("Your Score: " + (75 - parseInt(timeLeft)) + " seconds");
         timerEl.textContent = "Time: 0";
-        console.log("timeLeft: " + timeLeft);
     }
 
 });
@@ -273,7 +266,6 @@ function submitScore() {
 
 //Submit button
 submitButton.addEventListener("click", function() {
-    console.log("Submit Score")
     finalPage.classList.add("hide");
     highscorePage.classList.remove("hide");
     submitScore()
@@ -281,7 +273,6 @@ submitButton.addEventListener("click", function() {
 
 //Go back button
 backButton.addEventListener("click", function() {
-    console.log("Go Back")
     highscorePage.classList.add("hide");
     introPage.classList.remove("hide");
 
@@ -289,9 +280,7 @@ backButton.addEventListener("click", function() {
 
 //Clear button
 clearButton.addEventListener("click", function() {
-    console.log("Clear Highscores")
     leaderboardEl.innerHTML = "";
-
     localStorage.clear();
 });
 
