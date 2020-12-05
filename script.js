@@ -41,7 +41,7 @@ function startTimer() {
     timeLeft = 75;
     timerEl.textContent = "Time: " + timeLeft;
     console.log("START!");
-    interval = setInterval(function() {
+    timerInt = setInterval(function() {
         timeLeft--;
         timerEl.textContent = "Time: " + timeLeft;
       }, 1000);
@@ -60,8 +60,16 @@ questionPage1.addEventListener("click", function(event) {
     if (event.target.value !== "A") {
         timeLeft = timeLeft - 10;
         q1feedback.textContent = "Incorrect!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     } else {
         q1feedback.textContent = "Correct!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     }
 
     if(event.target.matches("button")) {
@@ -77,8 +85,16 @@ questionPage2.addEventListener("click", function(event) {
     if (event.target.value !== "A") {
         timeLeft = timeLeft - 10;    
         q2feedback.textContent = "Incorrect!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     } else {
         q2feedback.textContent = "Correct!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     }
 
     if(event.target.matches("button")) {
@@ -95,8 +111,16 @@ questionPage3.addEventListener("click", function(event) {
     if (event.target.value !== "A") {
         timeLeft = timeLeft - 10;    
         q3feedback.textContent = "Incorrect!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     } else {
         q3feedback.textContent = "Correct!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     }
 
     if(event.target.matches("button")) {
@@ -113,8 +137,16 @@ questionPage4.addEventListener("click", function(event) {
     if (event.target.value !== "A") {
         timeLeft = timeLeft - 10;    
         q4feedback.textContent = "Incorrect!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     } else {
         q4feedback.textContent = "Correct!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     }
 
     if(event.target.matches("button")) {
@@ -131,15 +163,23 @@ questionPage5.addEventListener("click", function(event) {
     if (event.target.value !== "A") {
         timeLeft = timeLeft - 10;    
         q5feedback.textContent = "Incorrect!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     } else {
         q5feedback.textContent = "Correct!";
+        var feedback = setInterval(function(){ 
+            q2feedback.textContent = ""; 
+            clearInterval(feedback);
+        }, 1500);
     }
 
     if(event.target.matches("button")) {
         console.log(event.target.value);
         questionPage5.classList.add("hide");
         finalPage.classList.remove("hide");
-        clearInterval(interval);
+        clearInterval(timerInt);
         currentScoreEl.textContent = ("Your Score: " + (75 - parseInt(timeLeft)) + " seconds");
         timerEl.textContent = "Time: 0";
         console.log("timeLeft: " + timeLeft);
