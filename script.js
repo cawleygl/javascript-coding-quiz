@@ -31,7 +31,6 @@ var initialsArr = [];
 var storedScores = [];
 var storedInitials = [];
 
-
 //Timer variable reset 
 var timeLeft = 0;
 timerEl.textContent = "Time: " + timeLeft;
@@ -60,14 +59,22 @@ questionPage1.addEventListener("click", function(event) {
     if (event.target.value !== "A") {
         timeLeft = timeLeft - 10;
         q1feedback.textContent = "Incorrect!";
+        q1feedback.classList.add("alert")
+        q1feedback.classList.add("alert-danger")
         var feedback = setInterval(function(){ 
             q1feedback.textContent = ""; 
+            q1feedback.classList.remove("alert")
+            q1feedback.classList.remove("alert-danger")
             clearInterval(feedback);
         }, 1500);
     } else {
         q1feedback.textContent = "Correct!";
+        q1feedback.classList.add("alert")
+        q1feedback.classList.add("alert-success")
         var feedback = setInterval(function(){ 
             q1feedback.textContent = ""; 
+            q1feedback.classList.remove("alert")
+            q1feedback.classList.remove("alert-success")
             clearInterval(feedback);
         }, 1500);
     }
@@ -83,16 +90,24 @@ questionPage1.addEventListener("click", function(event) {
 questionPage2.addEventListener("click", function(event) {
     event.preventDefault();
     if (event.target.value !== "A") {
-        timeLeft = timeLeft - 10;    
+        timeLeft = timeLeft - 10;
         q2feedback.textContent = "Incorrect!";
+        q2feedback.classList.add("alert")
+        q2feedback.classList.add("alert-danger")
         var feedback = setInterval(function(){ 
             q2feedback.textContent = ""; 
+            q2feedback.classList.remove("alert")
+            q2feedback.classList.remove("alert-danger")
             clearInterval(feedback);
         }, 1500);
     } else {
         q2feedback.textContent = "Correct!";
+        q2feedback.classList.add("alert")
+        q2feedback.classList.add("alert-success")
         var feedback = setInterval(function(){ 
             q2feedback.textContent = ""; 
+            q2feedback.classList.remove("alert")
+            q2feedback.classList.remove("alert-success")
             clearInterval(feedback);
         }, 1500);
     }
@@ -109,16 +124,24 @@ questionPage2.addEventListener("click", function(event) {
 questionPage3.addEventListener("click", function(event) {
     event.preventDefault();
     if (event.target.value !== "A") {
-        timeLeft = timeLeft - 10;    
+        timeLeft = timeLeft - 10;
         q3feedback.textContent = "Incorrect!";
+        q3feedback.classList.add("alert")
+        q3feedback.classList.add("alert-danger")
         var feedback = setInterval(function(){ 
             q3feedback.textContent = ""; 
+            q3feedback.classList.remove("alert")
+            q3feedback.classList.remove("alert-danger")
             clearInterval(feedback);
         }, 1500);
     } else {
         q3feedback.textContent = "Correct!";
+        q3feedback.classList.add("alert")
+        q3feedback.classList.add("alert-success")
         var feedback = setInterval(function(){ 
             q3feedback.textContent = ""; 
+            q3feedback.classList.remove("alert")
+            q3feedback.classList.remove("alert-success")
             clearInterval(feedback);
         }, 1500);
     }
@@ -135,16 +158,24 @@ questionPage3.addEventListener("click", function(event) {
 questionPage4.addEventListener("click", function(event) {
     event.preventDefault();
     if (event.target.value !== "A") {
-        timeLeft = timeLeft - 10;    
+        timeLeft = timeLeft - 10;
         q4feedback.textContent = "Incorrect!";
+        q4feedback.classList.add("alert")
+        q4feedback.classList.add("alert-danger")
         var feedback = setInterval(function(){ 
             q4feedback.textContent = ""; 
+            q4feedback.classList.remove("alert")
+            q4feedback.classList.remove("alert-danger")
             clearInterval(feedback);
         }, 1500);
     } else {
         q4feedback.textContent = "Correct!";
+        q4feedback.classList.add("alert")
+        q4feedback.classList.add("alert-success")
         var feedback = setInterval(function(){ 
             q4feedback.textContent = ""; 
+            q4feedback.classList.remove("alert")
+            q4feedback.classList.remove("alert-success")
             clearInterval(feedback);
         }, 1500);
     }
@@ -161,16 +192,24 @@ questionPage4.addEventListener("click", function(event) {
 questionPage5.addEventListener("click", function(event) {
     event.preventDefault();
     if (event.target.value !== "A") {
-        timeLeft = timeLeft - 10;    
+        timeLeft = timeLeft - 10;
         q5feedback.textContent = "Incorrect!";
+        q5feedback.classList.add("alert")
+        q5feedback.classList.add("alert-danger")
         var feedback = setInterval(function(){ 
             q5feedback.textContent = ""; 
+            q5feedback.classList.remove("alert")
+            q5feedback.classList.remove("alert-danger")
             clearInterval(feedback);
         }, 1500);
     } else {
         q5feedback.textContent = "Correct!";
+        q5feedback.classList.add("alert")
+        q5feedback.classList.add("alert-success")
         var feedback = setInterval(function(){ 
             q5feedback.textContent = ""; 
+            q5feedback.classList.remove("alert")
+            q5feedback.classList.remove("alert-success")
             clearInterval(feedback);
         }, 1500);
     }
