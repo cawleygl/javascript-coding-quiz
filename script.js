@@ -19,6 +19,11 @@ var timerEl = document.querySelector("#timer");
 var currentScoreEl = document.querySelector("#scoredisplay");
 var leaderboardEl = document.querySelector("#leaderboard");
 var initialsEl = document.querySelector("#initials");
+var q1feedback = document.querySelector("#q1feedback");
+var q2feedback = document.querySelector("#q2feedback");
+var q3feedback = document.querySelector("#q3feedback");
+var q4feedback = document.querySelector("#q4feedback");
+var q5feedback = document.querySelector("#q5feedback");
 
 //local storage arrays
 var scoresArr = [];
@@ -31,25 +36,35 @@ var storedInitials = [];
 var timeLeft = 0;
 timerEl.textContent = "Time: " + timeLeft;
 
-
-//Start button
-startButton.addEventListener("click", function() {
+function startTimer() {
     timeLeft = 75;
     timerEl.textContent = "Time: " + timeLeft;
     console.log("START!");
-    introPage.classList.add("hide");
-    questionPage1.classList.remove("hide");
     interval = setInterval(function() {
         timeLeft--;
         timerEl.textContent = "Time: " + timeLeft;
       }, 1000);
+}
+
+//Start button
+startButton.addEventListener("click", function() {
+    introPage.classList.add("hide");
+    questionPage1.classList.remove("hide");
+    startTimer();
 });
 
 //Select an answer for question 1
 questionPage1.addEventListener("click", function(event) {
     event.preventDefault();
+    if (event.target.value !== "A") {
+        timeLeft = timeLeft - 10;
+        q1feedback.textContent = "Incorrect!";
+    } else {
+        q1feedback.textContent = "Correct!";
+    }
+
     if(event.target.matches("button")) {
-        console.log(event.target.textContent);
+        console.log(event.target.value);
         questionPage1.classList.add("hide");
         questionPage2.classList.remove("hide");
     }
@@ -58,47 +73,77 @@ questionPage1.addEventListener("click", function(event) {
 //Select an answer for question 2
 questionPage2.addEventListener("click", function(event) {
     event.preventDefault();
+    if (event.target.value !== "A") {
+        timeLeft = timeLeft - 10;    
+        q2feedback.textContent = "Incorrect!";
+    } else {
+        q2feedback.textContent = "Correct!";
+    }
+
     if(event.target.matches("button")) {
-        console.log(event.target.textContent);
+        console.log(event.target.value);
         questionPage2.classList.add("hide");
         questionPage3.classList.remove("hide");
     }
+
 });
 
 //Select an answer for question 3
 questionPage3.addEventListener("click", function(event) {
     event.preventDefault();
+    if (event.target.value !== "A") {
+        timeLeft = timeLeft - 10;    
+        q3feedback.textContent = "Incorrect!";
+    } else {
+        q3feedback.textContent = "Correct!";
+    }
+
     if(event.target.matches("button")) {
-        console.log(event.target.textContent);
+        console.log(event.target.value);
         questionPage3.classList.add("hide");
         questionPage4.classList.remove("hide");
     }
+
 });
 
 //Select an answer for question 4
 questionPage4.addEventListener("click", function(event) {
     event.preventDefault();
+    if (event.target.value !== "A") {
+        timeLeft = timeLeft - 10;    
+        q4feedback.textContent = "Incorrect!";
+    } else {
+        q4feedback.textContent = "Correct!";
+    }
+
     if(event.target.matches("button")) {
-        console.log(event.target.textContent);
+        console.log(event.target.value);
         questionPage4.classList.add("hide");
         questionPage5.classList.remove("hide");
     }
+  
 });
 
 //Select an answer for question 5
 questionPage5.addEventListener("click", function(event) {
     event.preventDefault();
+    if (event.target.value !== "A") {
+        timeLeft = timeLeft - 10;    
+        q5feedback.textContent = "Incorrect!";
+    } else {
+        q5feedback.textContent = "Correct!";
+    }
+
     if(event.target.matches("button")) {
-        console.log(event.target.textContent);
+        console.log(event.target.value);
         questionPage5.classList.add("hide");
         finalPage.classList.remove("hide");
         clearInterval(interval);
         currentScoreEl.textContent = ("Your Score: " + (75 - parseInt(timeLeft)) + " seconds");
         timerEl.textContent = "Time: 0";
         console.log("timeLeft: " + timeLeft);
-
-
     }
+
 });
 
 
