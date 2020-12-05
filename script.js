@@ -61,13 +61,13 @@ questionPage1.addEventListener("click", function(event) {
         timeLeft = timeLeft - 10;
         q1feedback.textContent = "Incorrect!";
         var feedback = setInterval(function(){ 
-            q2feedback.textContent = ""; 
+            q1feedback.textContent = ""; 
             clearInterval(feedback);
         }, 1500);
     } else {
         q1feedback.textContent = "Correct!";
         var feedback = setInterval(function(){ 
-            q2feedback.textContent = ""; 
+            q1feedback.textContent = ""; 
             clearInterval(feedback);
         }, 1500);
     }
@@ -112,13 +112,13 @@ questionPage3.addEventListener("click", function(event) {
         timeLeft = timeLeft - 10;    
         q3feedback.textContent = "Incorrect!";
         var feedback = setInterval(function(){ 
-            q2feedback.textContent = ""; 
+            q3feedback.textContent = ""; 
             clearInterval(feedback);
         }, 1500);
     } else {
         q3feedback.textContent = "Correct!";
         var feedback = setInterval(function(){ 
-            q2feedback.textContent = ""; 
+            q3feedback.textContent = ""; 
             clearInterval(feedback);
         }, 1500);
     }
@@ -138,13 +138,13 @@ questionPage4.addEventListener("click", function(event) {
         timeLeft = timeLeft - 10;    
         q4feedback.textContent = "Incorrect!";
         var feedback = setInterval(function(){ 
-            q2feedback.textContent = ""; 
+            q4feedback.textContent = ""; 
             clearInterval(feedback);
         }, 1500);
     } else {
         q4feedback.textContent = "Correct!";
         var feedback = setInterval(function(){ 
-            q2feedback.textContent = ""; 
+            q4feedback.textContent = ""; 
             clearInterval(feedback);
         }, 1500);
     }
@@ -164,13 +164,13 @@ questionPage5.addEventListener("click", function(event) {
         timeLeft = timeLeft - 10;    
         q5feedback.textContent = "Incorrect!";
         var feedback = setInterval(function(){ 
-            q2feedback.textContent = ""; 
+            q5feedback.textContent = ""; 
             clearInterval(feedback);
         }, 1500);
     } else {
         q5feedback.textContent = "Correct!";
         var feedback = setInterval(function(){ 
-            q2feedback.textContent = ""; 
+            q5feedback.textContent = ""; 
             clearInterval(feedback);
         }, 1500);
     }
