@@ -186,6 +186,10 @@ function submitScore() {
        leaderboardTop.textContent = initial + ": " + score + " seconds";
        leaderboardEl.appendChild(leaderboardTop);
    }
+
+   //clear arrays to reset after render
+   scoresArr = []
+   initialsArr = []
 }
 
 //Submit button
@@ -208,7 +212,7 @@ backButton.addEventListener("click", function() {
 clearButton.addEventListener("click", function() {
     console.log("Clear Highscores")
     leaderboardEl.innerHTML = "";
-    localStorage.clear();
 
+    localStorage.clear();
 });
 
