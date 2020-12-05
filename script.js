@@ -31,6 +31,7 @@ var storedInitials = [];
 var timeLeft = 0;
 timerEl.textContent = "Time: " + timeLeft;
 
+
 //Start button
 startButton.addEventListener("click", function() {
     timeLeft = 75;
