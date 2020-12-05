@@ -113,21 +113,20 @@ submitButton.addEventListener("click", function() {
     var currentInitials = initialsEl.value
 
     // Get stored scores from localStorage
-
     var storedScores = JSON.parse(localStorage.getItem("scores"));
     var storedInitials = JSON.parse(localStorage.getItem("initials"));
       
     // If scores/initials were retrieved from localStorage, update the arrays to it
     if (storedScores !== null) {
-        scoresArr.concat(storedScores);
+        scoresArr = storedScores;
     }
     if (storedInitials !== null) {
-        initialsArr.concat(storedInitials);
+        initialsArr = storedInitials;
     }
 
     //concat current score/initials to arrays containing previous scores/initials
-    scoresArr.push(currentScore);
-    initialsArr.push(currentInitials);
+    scoresArr.unshift(currentScore);
+    initialsArr.unshift(currentInitials);
     
     //store both score and initials in local storage
     localStorage.setItem("scores", JSON.stringify(scoresArr));
